@@ -141,9 +141,9 @@
                     
                     <!-- Value Proposition Banner -->
                     <div class="pt-3">
-                         <div class="inline-flex items-center bg-blue-50 border border-blue-100 text-brand-dark px-4 py-2 rounded-lg text-sm font-medium">
-                            <i data-lucide="zap" class="h-4 w-4 mr-2 fill-current"></i>
-                            Tech skills (Admin & Dev) + Frontline sales experience = Ideal Solution Consultant
+                           <div class="inline-flex items-center bg-blue-50 border border-blue-100 text-brand-dark px-4 py-2 rounded-lg text-sm font-medium">
+                                <i data-lucide="zap" class="h-4 w-4 mr-2 fill-current"></i>
+                                Tech skills (Admin & Dev) + Frontline sales experience = Ideal Solution Consultant
                         </div>
                     </div>
                 </div>
@@ -356,6 +356,32 @@
 
     </main>
     
+    <!-- FOOTER: Added for credits and GDPR/privacy details -->
+    <footer class="bg-header-bg border-t border-gray-200 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-text-muted space-y-3">
+            <p class="font-medium text-text-main">Punit R. Sharma Portfolio (Salesforce Consultant)</p>
+            <p>&copy; <span id="current-year"></span> Punit R. Sharma. All Rights Reserved.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 font-normal">
+                <!-- GDPR/Privacy Placeholder -->
+                <a href="#privacy-policy" onclick="alert('This link would navigate to a detailed Privacy Policy page describing data collection/usage (GDPR compliance).')" class="hover:text-brand transition-colors flex items-center">
+                    <i data-lucide="shield-check" class="h-4 w-4 mr-1.5"></i> Privacy Notice (GDPR Compliant)
+                </a>
+                
+                <!-- Credits & Last Update -->
+                <span class="text-gray-400 hidden sm:inline">|</span>
+                <span class="flex items-center">
+                     <i data-lucide="clock" class="h-4 w-4 mr-1.5"></i> Last Updated: <span id="last-updated-date" class="ml-1"></span>
+                </span>
+                <span class="text-gray-400 hidden sm:inline">|</span>
+                <span class="flex items-center">
+                    <i data-lucide="code" class="h-4 w-4 mr-1.5"></i> Design based on Tailwind CSS & Lucide Icons
+                </span>
+            </div>
+        </div>
+    </footer>
+
+
     <!-- MODALS -->
     
     <!-- Job Details Modal -->
@@ -423,6 +449,10 @@
     <script>
         lucide.createIcons();
 
+        // FOOTER DATE LOGIC
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.getElementById('last-updated-date').textContent = "Nov 2025"; // Hardcoding for portfolio relevance
+
         // --- DATA ---
         const workExperience = [
             {
@@ -437,6 +467,20 @@
                     'Operations Governance: Managed Roles, Profiles, and comprehensive sharing settings to ensure stringent data security and appropriate access levels, overseeing the end-to-end implementation and governance of Salesforce Health Cloud.',
                     'Patient Engagement: Streamlined processes by implementing WhatsApp Integration (Enhanced Messaging), significantly improving two-way communication efficiency.',
                     'Stakeholder Collaboration: Translated complex user requirements into clear, actionable technical functionalities, providing critical insights to the development team for accurate solution delivery.'
+                ]
+            },
+            {
+                id: 'currys',
+                title: 'Sales Assistant (Part-time)',
+                company: 'Currys plc, Cork, Ireland',
+                timeline: 'Apr 2025 - Aug 2025',
+                companyDomain: 'Retail / Consumer Electronics',
+                experienceDomain: 'Frontline Sales & Customer Service',
+                details: [
+                    'Managed point-of-sale transactions and billing, ensuring accuracy and a fast, smooth checkout process for customers.',
+                    'Provided guidance on product selection and effectively upsold product insurance processes, enhancing customer peace of mind and driving revenue.',
+                    'Resolved customer queries and issues efficiently, demonstrating strong professional communication and problem-solving.',
+                    'Contributed to enhanced store layouts and displays, driving increased foot traffic and sales. Maintained accurate stock levels and conducted regular inventory checks, supporting retail operations efficiency.'
                 ]
             },
             {
@@ -469,6 +513,22 @@
         ];
 
         const keyProjects = [
+            // 1. HEALTHCARE PROJECT (First in sequence)
+            {
+                id: 'salesforce-crm',
+                title: 'Salesforce Patient Intake System',
+                subtitle: 'Health Cloud Implementation',
+                description: 'Automated, compliant end-to-end digital journey for patient screening and assessment using Health Cloud & Experience Cloud.',
+                icon: 'heart-pulse',
+                link: null,
+                details: [
+                    { title: 'Compliance & Security', content: 'Designed system processing Health Data adhering to GDPR standards, leveraging Salesforce Shield and Health Cloud Consent Management to ensure patient confidentiality.' },
+                    { title: 'Automation Flow Design', content: 'Implemented a multi-stage **Salesforce Flow** that automates the creation of a Patient Card, assigns risk scores based on screening data, and dispatches an Experience Cloud welcome packet.' },
+                    { title: 'Business Process Improvement', content: 'Reduced manual administrative workload by an estimated 40% by digitizing the referral and initial assessment processes within the Health Cloud CRM.' }
+                ],
+                accentColor: '#4CAF50'
+            },
+            // 2. WASTE ANALYSIS PROJECT (Second in sequence)
             {
                 id: 'ev-waste',
                 title: 'European EV Battery Waste Analysis',
@@ -483,208 +543,203 @@
                 ],
                 accentColor: '#0070D2'
             },
+            // 3. BANKING PROJECT (Last in sequence - Updated content)
             {
-                id: 'salesforce-crm',
-                title: 'Salesforce Patient Intake System',
-                subtitle: 'Health Cloud Implementation',
-                description: 'Automated, compliant end-to-end digital journey for patient screening and assessment using Health Cloud & Experience Cloud.',
-                icon: 'heart-pulse',
-                link: null,
-                details: [
-                    { title: 'Compliance & Security', content: 'Designed system processing Health Data adhering to GDPR standards, leveraging Salesforce Shield and Health Cloud Consent Management.' },
-                    { title: 'Digital Workflow', content: 'Developed multi-phase flows (Intake -> Scheduling -> Delivery) utilizing Salesforce Scheduler and WhatsApp Integration.' },
-                    { title: 'Data Architecture', content: 'Utilized Person Accounts and Health Cloud objects with Case as the central tracker for flexible patient management.' }
-                ],
-                accentColor: '#059669'
-            },
-            {
-                id: 'banking-app',
-                title: 'Banking App Risk & Efficiency',
-                subtitle: 'Core Banking Optimization',
-                description: 'Enhancing stability, performance, and compliance of a legacy core banking application.',
-                icon: 'landmark',
-                link: null,
-                details: [
-                    // UPDATED PROJECT DETAILS START HERE
+                id: 'banking-app-integration',
+                title: 'Banking App Risk & Efficiency', // UPDATED TITLE
+                subtitle: 'Core Banking Application Optimization & Compliance', // NEW SUBTITLE
+                description: 'A comprehensive project focused on improving the stability, security, and performance of a legacy core banking system through Salesforce integration and deep technical optimization.', // NEW DESCRIPTION
+                icon: 'banknote',
+                link: null, // Assuming no public link for proprietary banking projects
+                details: [ // UPDATED DETAILS from professional_project_description.md
                     { title: 'Salesforce Integration & Access Control', content: 'Led the integration of Salesforce into the core banking application, specifically designing and implementing enhanced user privilege and access control mechanisms (applying RBAC principles) to safeguard sensitive data and maintain strict regulatory compliance.' },
-                    { title: 'Agile Delivery & Feature Implementation', content: 'Drove feature development within an Agile framework, consistently achieving an 80%+ solution delivery accuracy rate by executing comprehensive requirements gathering, system testing, and on-time application deployment each sprint.' },
+                    { title: 'Core Banking Optimization', content: 'Enhancing stability, performance, and compliance of a legacy core banking application.' },
                     { title: 'Technical Resolution & Performance', content: 'Proactively resolved complex technical defects and implemented DB query optimizations, resulting in a 90% defect resolution accuracy rate and a 60% reduction in core banking application response time.' },
-                    { title: 'Production Incident Management', content: 'Collaborated with Tier-2 support to provide immediate workarounds for critical production issues, ensuring continuity of operations and resolving 100+ high-priority incidents within service level agreements.' }
-                    // UPDATED PROJECT DETAILS END HERE
+                    { title: 'Production Incident Management', content: 'Collaborated with Tier-2 support to provide immediate workarounds for critical production issues, ensuring continuity of operations and resolving 100+ high-priority incidents within service level agreements.' },
+                    { title: 'Agile Delivery & Feature Implementation', content: 'Drove feature development within an Agile framework, consistently achieving an 80%+ solution delivery accuracy rate by executing comprehensive requirements gathering, system testing, and on-time application deployment each sprint.' }
                 ],
-                accentColor: '#475569'
+                accentColor: '#F59E0B' // Amber/Gold color for Finance
             }
         ];
-
-        // --- FUNCTIONS ---
-
-        // Work Experience
-        function showJobDetails(jobId) {
-            const job = workExperience.find(j => j.id === jobId);
-            if (!job) return;
-
-            document.getElementById('modal-title').textContent = job.title;
-            document.getElementById('modal-company').textContent = job.company;
-            document.getElementById('modal-timeline').innerText = job.timeline;
-            document.getElementById('modal-company-domain').innerText = job.companyDomain;
-            document.getElementById('modal-experience-domain').innerText = job.experienceDomain;
+        
+        // --- CORE FUNCTIONS (Work Experience) ---
+        function createExperienceCard(job) {
+            const card = document.createElement('div');
+            card.className = 'bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition cursor-pointer border-t-4 border-brand';
+            card.setAttribute('onclick', `showJobDetails('${job.id}')`);
             
-            const detailsList = document.getElementById('modal-details');
-            detailsList.innerHTML = job.details.map(detail => `
-                <li class="flex items-start">
-                    <i data-lucide="check" class="h-5 w-5 mr-2 text-green-500 mt-0.5 flex-shrink-0"></i>
-                    <span>${detail}</span>
-                </li>
-            `).join('');
+            const [startYear, endYear] = job.timeline.split(' - ').map(t => t.split(' ')[0]);
 
-            lucide.createIcons();
-            document.getElementById('details-modal').classList.remove('hidden');
+            card.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-brand-dark">${job.experienceDomain}</p>
+                    <div class="flex items-center text-xs text-text-muted">
+                        <i data-lucide="calendar" class="h-3.5 w-3.5 mr-1"></i> ${startYear} - ${endYear}
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-text-main mb-1">${job.title}</h3>
+                <p class="text-sm text-text-muted">${job.company}</p>
+                
+                <div class="mt-4 pt-4 border-t border-gray-100">
+                    <p class="text-sm font-medium text-text-main mb-2">Key Contribution Snapshot:</p>
+                    <ul class="text-xs text-text-muted space-y-2 list-none">
+                        <li><i data-lucide="star" class="h-3 w-3 inline mr-1 text-brand"></i> ${job.details[0] || 'Detail 1'}</li>
+                        <li><i data-lucide="star" class="h-3 w-3 inline mr-1 text-brand"></i> ${job.details[1] || 'Detail 2'}</li>
+                    </ul>
+                    <button class="mt-3 text-brand text-xs font-semibold hover:text-brand-dark transition-colors flex items-center">
+                        View Full Details <i data-lucide="arrow-right" class="h-3 w-3 ml-1"></i>
+                    </button>
+                </div>
+            `;
+            lucide.createIcons({'container': card});
+            return card;
         }
 
         function renderWorkExperience() {
             const container = document.getElementById('work-experience-container');
-            if (!container) return;
-            container.innerHTML = '';
+            if (container) {
+                container.innerHTML = '';
+                workExperience.forEach(job => {
+                    container.appendChild(createExperienceCard(job));
+                });
+            }
+        }
+        
+        function showJobDetails(id) {
+            const job = workExperience.find(j => j.id === id);
+            if (!job) return;
 
-            workExperience.forEach(job => {
-                const isCurrent = job.timeline.includes('Present');
-                const card = document.createElement('div');
-                card.className = `bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-brand hover:shadow-md transition-all cursor-pointer flex flex-col justify-between h-full group`;
-                card.onclick = () => showJobDetails(job.id);
-
-                card.innerHTML = `
-                    <div>
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-lg font-bold text-text-main group-hover:text-brand transition-colors">${job.title}</h3>
-                            <span class="text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wide">${job.company}</span>
-                        </div>
-                        <div class="space-y-2 mb-4">
-                            <p class="text-sm text-gray-600 flex items-center"><i data-lucide="calendar" class="h-4 w-4 mr-2 text-brand"></i> ${job.timeline}</p>
-                            <p class="text-sm text-gray-600 flex items-center"><i data-lucide="briefcase" class="h-4 w-4 mr-2 text-brand"></i> ${job.experienceDomain}</p>
-                        </div>
-                    </div>
-                    <button class="w-full mt-2 py-2 text-sm font-semibold text-brand bg-blue-50 rounded hover:bg-brand hover:text-white transition-colors">
-                        View Details
-                    </button>
-                `;
-                container.appendChild(card);
+            document.getElementById('modal-title').textContent = job.title;
+            document.getElementById('modal-company').textContent = job.company;
+            document.getElementById('modal-timeline').innerHTML = `<i data-lucide="calendar" class="h-4 w-4 mr-1.5"></i> ${job.timeline}`;
+            document.getElementById('modal-company-domain').innerHTML = `<i data-lucide="building-2" class="h-4 w-4 mr-1.5"></i> ${job.companyDomain}`;
+            document.getElementById('modal-experience-domain').innerHTML = `<i data-lucide="briefcase" class="h-4 w-4 mr-1.5"></i> ${job.experienceDomain}`;
+            
+            const detailsList = document.getElementById('modal-details');
+            detailsList.innerHTML = '';
+            job.details.forEach(detail => {
+                const li = document.createElement('li');
+                li.className = 'flex items-start text-base'; // Added text-base for better readability
+                // Use a custom bullet or checkmark for visual appeal
+                li.innerHTML = `<i data-lucide="check-circle" class="h-5 w-5 mr-3 flex-shrink-0 text-brand mt-1"></i><span>${detail}</span>`;
+                detailsList.appendChild(li);
             });
-            lucide.createIcons();
+
+            // Re-render lucide icons inside the modal
+            lucide.createIcons({'container': document.getElementById('details-modal')});
+            document.getElementById('details-modal').classList.remove('hidden');
         }
 
-        // Skills
-        function setupSkillFiltering() {
-            const btns = document.querySelectorAll('.filter-btn');
-            const tags = document.querySelectorAll('.skill-tag');
+        // --- CORE FUNCTIONS (Skills) ---
+        function setupSkillFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const skillTags = document.querySelectorAll('.skill-tag');
 
-            btns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Reset buttons
-                    btns.forEach(b => {
-                        b.classList.remove('bg-brand', 'text-white', 'active-filter');
-                        b.classList.add('bg-white', 'text-text-muted');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const filter = e.target.dataset.filter;
+                    
+                    // Update active button state
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active-filter', 'bg-brand', 'text-white', 'border-brand');
+                        btn.classList.add('bg-white', 'text-text-muted', 'border-gray-200', 'hover:bg-gray-50');
                     });
-                    // Active button
-                    btn.classList.remove('bg-white', 'text-text-muted');
-                    btn.classList.add('bg-brand', 'text-white', 'active-filter');
 
-                    const filter = btn.dataset.filter;
-                    tags.forEach(tag => {
-                        // Check if the tag contains the filter in its data-categories attribute
-                        if(filter === 'all' || tag.dataset.categories.includes(filter)) {
-                            tag.style.display = 'inline-block';
-                        } else {
-                            tag.style.display = 'none';
-                        }
+                    e.target.classList.add('active-filter', 'bg-brand', 'text-white', 'border-brand');
+                    e.target.classList.remove('bg-white', 'text-text-muted', 'border-gray-200', 'hover:bg-gray-50');
+
+
+                    skillTags.forEach(tag => {
+                        const categories = tag.dataset.categories.split(' ');
+                        const isVisible = filter === 'all' || categories.includes(filter);
+                        tag.style.display = isVisible ? 'inline-block' : 'none';
                     });
                 });
             });
         }
-
-        // Projects
-        let activeProjectId = keyProjects[0].id;
-
-        function renderProjects() {
-            const btnContainer = document.getElementById('project-tab-buttons');
+        
+        // --- CORE FUNCTIONS (Projects) ---
+        function renderProjectTabs() {
+            const buttonContainer = document.getElementById('project-tab-buttons');
             const contentContainer = document.getElementById('project-tab-content-wrapper');
-            
-            btnContainer.innerHTML = '';
+            buttonContainer.innerHTML = '';
             contentContainer.innerHTML = '';
 
-            keyProjects.forEach(project => {
-                // Buttons
-                const btn = document.createElement('button');
-                btn.className = `tab-btn px-6 py-4 text-sm font-medium text-gray-500 whitespace-nowrap hover:text-brand hover:bg-gray-50 flex-shrink-0`;
-                btn.innerText = project.title;
-                btn.dataset.id = project.id;
-                btn.onclick = () => switchProject(project.id);
-                btnContainer.appendChild(btn);
+            keyProjects.forEach((project, index) => {
+                // Create Button
+                const button = document.createElement('button');
+                const isActive = index === 0;
+                button.className = `tab-btn px-6 py-3 text-text-muted whitespace-nowrap text-lg ${isActive ? 'active-tab' : 'hover:text-brand-dark'}`;
+                button.setAttribute('data-target', project.id);
+                button.textContent = project.title;
+                button.onclick = () => switchProjectTab(project.id);
+                buttonContainer.appendChild(button);
 
-                // Content
-                const content = document.createElement('div');
-                content.id = `content-${project.id}`;
-                content.className = 'hidden animate-fadeIn';
-                
-                const detailsHtml = project.details.map(d => `
-                    <li class="mb-4">
-                        <span class="font-bold text-text-main block mb-1">${d.title}</span>
-                        <span class="text-gray-600 leading-relaxed">${d.content}</span>
-                    </li>
-                `).join('');
-
-                content.innerHTML = `
-                    <div class="flex items-center mb-6">
-                        <div class="p-3 rounded-lg bg-blue-50 text-brand mr-4">
-                            <i data-lucide="${project.icon}" class="h-8 w-8"></i>
+                // Create Content
+                const contentDiv = document.createElement('div');
+                contentDiv.id = `content-${project.id}`;
+                contentDiv.className = `project-tab-content ${isActive ? '' : 'hidden'}`;
+                contentDiv.innerHTML = `
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+                            <div class="space-y-1">
+                                <h3 class="text-xl md:text-2xl font-bold text-text-main flex items-center" style="color: ${project.accentColor || '#0070D2'};">
+                                    <i data-lucide="${project.icon}" class="h-6 w-6 mr-2"></i> ${project.subtitle}
+                                </h3>
+                                <p class="text-lg text-text-muted">${project.description}</p>
+                            </div>
+                            ${project.link ? `
+                                <a href="${project.link}" target="_blank" class="hidden sm:inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg shadow-sm text-text-main bg-white hover:bg-gray-50 transition">
+                                    <i data-lucide="github" class="h-4 w-4 mr-2"></i> View Code
+                                </a>
+                            ` : ''}
                         </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-text-main">${project.title}</h3>
-                            <p class="text-brand font-medium">${project.subtitle}</p>
-                        </div>
+                        
+                        <ul class="project-detail-list text-text-muted">
+                            ${project.details.map(detail => `
+                                <li>
+                                    <span class="font-semibold text-text-main">${detail.title}:</span> 
+                                    ${detail.content}
+                                </li>
+                            `).join('')}
+                        </ul>
                     </div>
-                    <p class="text-gray-600 italic mb-6 border-l-4 border-gray-200 pl-4">${project.description}</p>
-                    <ul class="project-detail-list pl-4 text-sm md:text-base">
-                        ${detailsHtml}
-                    </ul>
-                    ${project.link ? `<div class="mt-6 pt-4 border-t border-gray-100">
-                        <a href="${project.link}" target="_blank" class="text-brand font-bold hover:underline inline-flex items-center">
-                            View on GitHub <i data-lucide="arrow-right" class="h-4 w-4 ml-1"></i>
-                        </a>
-                    </div>` : ''}
                 `;
-                contentContainer.appendChild(content);
+                contentContainer.appendChild(contentDiv);
             });
-            
-            switchProject(activeProjectId);
+            lucide.createIcons({'container': contentContainer});
         }
 
-        function switchProject(id) {
-            activeProjectId = id;
-            // Toggle Buttons
+        function switchProjectTab(targetId) {
+            // Update buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                if(btn.dataset.id === id) {
-                    btn.classList.add('active-tab', 'text-brand');
-                    btn.classList.remove('text-gray-500');
-                } else {
-                    btn.classList.remove('active-tab', 'text-brand');
-                    btn.classList.add('text-gray-500');
+                btn.classList.remove('active-tab');
+                if (btn.getAttribute('data-target') === targetId) {
+                    btn.classList.add('active-tab');
                 }
             });
-            // Toggle Content
-            document.querySelectorAll('#project-tab-content-wrapper > div').forEach(div => {
-                if(div.id === `content-${id}`) div.classList.remove('hidden');
-                else div.classList.add('hidden');
+
+            // Update content
+            document.querySelectorAll('.project-tab-content').forEach(content => {
+                if (content.id === `content-${targetId}`) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
             });
-            lucide.createIcons();
         }
 
-        // Init
-        window.onload = () => {
+
+        // --- INIT ---
+        document.addEventListener('DOMContentLoaded', () => {
             renderWorkExperience();
-            setupSkillFiltering();
-            renderProjects();
-            lucide.createIcons();
-        };
+            setupSkillFilters();
+            renderProjectTabs();
+            // Initial call to set the first tab as active
+            if (keyProjects.length > 0) {
+                 switchProjectTab(keyProjects[0].id);
+            }
+        });
 
     </script>
 </body>
