@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punit R. Sharma - Salesforce Consultant</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for aesthetic icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Configure Tailwind for Inter font and High Readability Theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // THEME: Salesforce Lightning Style (Clean, White, Blue)
+                        'brand': '#0070D2', // Salesforce Blue (Primary Accent)
+                        'brand-dark': '#005FB2', // Darker Blue for hover states
+                        'header-bg': '#FFFFFF', // White Header for maximum readability
+                        'page-bg': '#F3F4F6', // Light Gray background
+                        'card-bg': '#FFFFFF',
+                        'text-main': '#1E293B', // Slate 800 (Almost Black)
+                        'text-muted': '#475569', // Slate 600
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Refined Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Skill Tag Styling */
+        .skill-tag {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid #E2E8F0;
+        }
+        .skill-tag:hover {
+            border-color: #0070D2;
+            background-color: #F0F9FF;
+        }
+        .skill-tag.active-filter {
+            background-color: #0070D2;
+            color: white;
+            border-color: #0070D2;
+            box-shadow: 0 4px 6px -1px rgba(0, 112, 210, 0.3);
+        }
+
+        /* Section Header Styling */
+        .section-header {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            color: #1E293B;
+        }
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px; 
+            height: 4px;
+            background-color: #0070D2;
+            border-radius: 2px;
+        }
+        
+        /* Tab Button Styling */
+        .tab-btn {
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: #0070D2;
+            transition: width 0.3s;
+        }
+        .tab-btn.active-tab {
+            color: #0070D2;
+            font-weight: 700;
+        }
+        .tab-btn.active-tab::after {
+            width: 100%;
+        }
+
+        /* List Styling */
+        .project-detail-list li {
+            margin-bottom: 0.75rem;
+        }
+        .project-detail-list li::before {
+            content: '•';
+            color: #0070D2;
+            font-weight: 900;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+    </style>
+</head>
+<body class="bg-page-bg text-text-main min-h-screen">
+
+    <!-- HEADER: Clean White Background with Dark Text for Readability -->
+    <header class="bg-header-bg sticky top-0 z-50 shadow-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
+                
+                <!-- Name & Role -->
+                <div class="space-y-1">
+                    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-text-main">Punit Ramesh Sharma</h1>
+                    <p class="text-xl text-brand font-semibold">Salesforce Consultant & Business Analyst</p>
+                    
+                    <!-- Value Proposition Banner -->
+                    <div class="pt-3">
+                         <div class="inline-flex items-center bg-blue-50 border border-blue-100 text-brand-dark px-4 py-2 rounded-lg text-sm font-medium">
+                            <i data-lucide="zap" class="h-4 w-4 mr-2 fill-current"></i>
+                            Tech skills (Admin & Dev) + Frontline sales experience = Ideal Solution Consultant
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="flex flex-col items-start lg:items-end space-y-2 text-sm text-text-muted w-full lg:w-auto">
+                    <div class="flex flex-wrap gap-4 lg:justify-end">
+                        <a href="https://www.linkedin.com/in/prs-punit-sharma/" target="_blank" class="flex items-center hover:text-brand transition-colors">
+                            <i data-lucide="linkedin" class="h-4 w-4 mr-1.5"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/haritashprs" target="_blank" class="flex items-center hover:text-brand transition-colors">
+                            <i data-lucide="github" class="h-4 w-4 mr-1.5"></i> GitHub
+                        </a>
+                        <a href="mailto:haritashprsisic@gmail.com" class="flex items-center hover:text-brand transition-colors">
+                            <i data-lucide="mail" class="h-4 w-4 mr-1.5"></i> haritashprsisic@gmail.com
+                        </a>
+                        <span class="flex items-center text-text-muted">
+                            <i data-lucide="map-pin" class="h-4 w-4 mr-1.5"></i> Cork, Ireland
+                        </span>
+                    </div>
+                    
+                    <!-- Call to Action Button -->
+                    <button onclick="document.getElementById('contact-modal').classList.remove('hidden')" class="mt-2 w-full lg:w-auto px-6 py-2.5 bg-brand text-white font-semibold rounded-md shadow hover:bg-brand-dark transition-transform transform active:scale-95 flex items-center justify-center">
+                        <i data-lucide="send" class="h-4 w-4 mr-2"></i> Get in Touch / Request CV
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+        <!-- KEY FOCUS AREAS -->
+        <section class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <h2 class="section-header text-2xl font-bold flex items-center">
+                <i data-lucide="crosshair" class="h-6 w-6 mr-2 text-brand"></i> Key Focus Areas & Desired Roles
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Primary Domains -->
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                    <h3 class="font-semibold text-lg text-text-main mb-3">Primary Domains</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white text-green-700 px-3 py-1.5 rounded border border-green-200 text-sm font-medium flex items-center shadow-sm">
+                            <i data-lucide="activity" class="h-3 w-3 mr-1.5"></i> Healthcare / Medical Services
+                        </span>
+                        <span class="bg-white text-blue-700 px-3 py-1.5 rounded border border-blue-200 text-sm font-medium flex items-center shadow-sm">
+                            <i data-lucide="landmark" class="h-3 w-3 mr-1.5"></i> BFSI (Banking & Finance)
+                        </span>
+                    </div>
+                </div>
+                <!-- Desired Roles -->
+                <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                    <h3 class="font-semibold text-lg text-text-main mb-3">Seeking Roles As</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white text-text-main px-3 py-1.5 rounded border border-gray-200 text-sm font-medium shadow-sm">Salesforce Consultant</span>
+                        <span class="bg-white text-text-main px-3 py-1.5 rounded border border-gray-200 text-sm font-medium shadow-sm">Salesforce Administrator</span>
+                        <span class="bg-white text-text-main px-3 py-1.5 rounded border border-gray-200 text-sm font-medium shadow-sm">IT Support Analyst</span>
+                        <span class="bg-white text-text-main px-3 py-1.5 rounded border border-gray-200 text-sm font-medium shadow-sm">Business System Analyst</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFESSIONAL SUMMARY -->
+        <section class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-brand">
+            <h2 class="section-header text-2xl font-bold">Professional Summary</h2>
+            <p class="text-lg leading-relaxed text-text-muted">
+                A <span class="font-semibold text-brand">Salesforce Certified Administrator</span> and versatile technical specialist with over two years of hands-on experience in application support, system implementation, and governance. Highly effective in providing Tier-2 support coordination and establishing workarounds to directly minimize Mean Time to Mitigate (MTTM) for core operations. Proficient in Salesforce configuration across Loan Origination Systems (LOS) and Clinical/Mental Health CRM applications, with expertise in User and Access Management, Data Management (ETL, SQL/SOQL, Power BI), and Agile methodology. Currently pursuing an MSc in Business Analytics from University College Cork (2025).
+            </p>
+        </section>
+
+        <!-- TECHNICAL SKILLS -->
+        <section>
+            <h2 class="section-header text-2xl font-bold">Technical Skills & Expertise</h2>
+            <div id="skills-container" class="space-y-6">
+                
+                <!-- Filter Buttons - UPDATED LABELS -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="filter-btn bg-brand text-white px-4 py-2 rounded-md text-sm font-medium shadow-sm active-filter" data-filter="all">All Skills</button>
+                    <button class="filter-btn bg-white text-text-muted px-4 py-2 rounded-md text-sm font-medium border border-gray-200 hover:bg-gray-50" data-filter="sf-ops">Salesforce & CRM</button>
+                    <button class="filter-btn bg-white text-text-muted px-4 py-2 rounded-md text-sm font-medium border border-gray-200 hover:bg-gray-50" data-filter="biz-analysis">Business Analysis & Modeling</button>
+                    <button class="filter-btn bg-white text-text-muted px-4 py-2 rounded-md text-sm font-medium border border-gray-200 hover:bg-gray-50" data-filter="data-bi">Data, BI & Querying</button>
+                    <button class="filter-btn bg-white text-text-muted px-4 py-2 rounded-md text-sm font-medium border border-gray-200 hover:bg-gray-50" data-filter="platforms">Platforms & Development Tools</button>
+                </div>
+                
+                <!-- Tags Container - UPDATED SKILLS -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-wrap gap-3">
+                    
+                    <!-- Salesforce Administration & Operations -->
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">Salesforce Certified Administrator</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">Salesforce Platform</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">Salesforce Flows</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">Salesforce APEX</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">Data Management (ETL, SOQL)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">User/Access Management</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">SOQL (Salesforce Object Query Language)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">Health Cloud CRM</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="sf-ops">Loan Origination Systems</span>
+                    
+                    <!-- Business Analysis -->
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Requirements Elicitation</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Process Mapping/Modeling</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Use Case Development</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">User Story Creation (Jira)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Gap Analysis</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Root Cause Analysis</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Business Process Improvement</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Stakeholder Management</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Requirements Documentation</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Testing and Validation</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="biz-analysis">Journey Mapping</span>
+
+                    <!-- Data & BI -->
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="data-bi">Power BI</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="data-bi">ETL (Extract, Transform, Load)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="data-bi">SQL (Database Querying)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="data-bi">Python (Pandas, Data Analysis)</span>
+                    
+                    <!-- Platforms & Dev Tools -->
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="platforms">Atlassian Jira (Ticket/Incident Management)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="platforms">GIT (Version Control)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="platforms">Figma (Prototyping)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="platforms">Lucidchart (Process Modeling)</span>
+                    <span class="skill-tag bg-white text-text-main py-2 px-4 rounded-lg text-sm font-medium" data-categories="platforms">HTML/CSS/JS (Web Fundamentals)</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- WORK EXPERIENCE -->
+        <section>
+            <h2 class="section-header text-2xl font-bold">Work Experience</h2>
+            <div id="work-experience-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamic Cards injected here -->
+            </div>
+        </section>
+
+        <!-- PROJECTS (Clean Tabs) -->
+        <section>
+            <h2 class="section-header text-2xl font-bold">Key Projects</h2>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <!-- Tabs Header -->
+                <div id="project-tab-buttons" class="flex border-b border-gray-200 bg-gray-50 overflow-x-auto">
+                    <!-- Buttons injected here -->
+                </div>
+                <!-- Content -->
+                <div id="project-tab-content-wrapper" class="p-6 md:p-8">
+                    <!-- Content injected here -->
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="https://github.com/haritashprs/IS6611-Applied-Research-in-Business-Analytics" target="_blank"
+                    class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg shadow-sm text-text-main bg-white hover:bg-gray-50 transition hover:border-brand hover:text-brand">
+                    <i data-lucide="external-link" class="h-5 w-5 mr-2"></i> Link All Projects (Primary Repo)
+                </a>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CERTIFICATIONS -->
+        <section>
+            <h2 class="section-header text-2xl font-bold">Education & Certifications</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Education -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-brand/30 transition">
+                    <h3 class="text-xl font-bold mb-4 text-brand flex items-center">
+                        <i data-lucide="graduation-cap" class="h-6 w-6 mr-2"></i> Education
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-gray-200 pl-4">
+                            <p class="font-bold text-lg text-text-main">MSc in Business Analytics</p>
+                            <p class="text-brand-dark font-medium">University College Cork (UCC)</p>
+                            <p class="text-sm text-text-muted mt-1">2024 - 2025 | 2nd Class Honours (Grade 1)</p>
+                        </div>
+                        <div class="border-l-2 border-gray-200 pl-4">
+                            <p class="font-bold text-lg text-text-main">Bachelor of Engineering (Computer)</p>
+                            <p class="text-brand-dark font-medium">St Vincent Pallotti College</p>
+                            <p class="text-sm text-text-muted mt-1">2018 - 2022 | CGPA: 9.36</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:border-green-500/30 transition">
+                    <h3 class="text-xl font-bold mb-4 text-green-600 flex items-center">
+                        <i data-lucide="award" class="h-6 w-6 mr-2"></i> Certifications
+                    </h3>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-green-600 mr-3 flex-shrink-0"></i>
+                            <span class="font-medium text-green-900">Salesforce Certified Administrator</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-green-600 mr-3 flex-shrink-0"></i>
+                            <span class="font-medium text-green-900">Salesforce Platform Developer I</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-green-600 mr-3 flex-shrink-0"></i>
+                            <span class="font-medium text-green-900">Salesforce JavaScript Developer I</span>
+                        </div>
+                        <div class="flex items-center p-3 bg-green-50 rounded-lg border border-green-100">
+                            <i data-lucide="check-circle-2" class="h-5 w-5 text-green-600 mr-3 flex-shrink-0"></i>
+                            <span class="font-medium text-green-900">Salesforce AI Associate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- MODALS -->
+    
+    <!-- Job Details Modal -->
+    <div id="details-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50 transition-opacity">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b border-gray-100 p-6 flex justify-between items-center">
+                <h3 id="modal-title" class="text-2xl font-bold text-brand">Job Title</h3>
+                <button onclick="document.getElementById('details-modal').classList.add('hidden')" class="text-gray-400 hover:text-red-500 transition p-1">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+            <div class="p-6">
+                <div class="grid md:grid-cols-2 gap-4 mb-6 bg-gray-50 p-4 rounded-lg border border-gray-100">
+                    <div>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 font-bold mb-1">Company</p>
+                        <p id="modal-company" class="font-semibold text-text-main"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 font-bold mb-1">Timeline</p>
+                        <p id="modal-timeline" class="flex items-center text-text-main"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 font-bold mb-1">Domain</p>
+                        <p id="modal-company-domain" class="flex items-center text-text-main"></p>
+                    </div>
+                    <div>
+                        <p class="text-xs uppercase tracking-wider text-gray-500 font-bold mb-1">Focus Area</p>
+                        <p id="modal-experience-domain" class="flex items-center text-text-main"></p>
+                    </div>
+                </div>
+                
+                <h4 class="text-lg font-bold mb-3 text-text-main flex items-center">
+                    <i data-lucide="list-todo" class="h-5 w-5 mr-2 text-brand"></i> Key Contributions
+                </h4>
+                <ul id="modal-details" class="space-y-3 text-text-muted list-none">
+                    <!-- Dynamic content -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+            <div class="flex justify-between items-center border-b border-gray-100 pb-4 mb-4">
+                <h3 class="text-xl font-bold text-text-main">Let's Connect</h3>
+                <button onclick="document.getElementById('contact-modal').classList.add('hidden')" class="text-gray-400 hover:text-red-500 transition">
+                    <i data-lucide="x" class="h-6 w-6"></i>
+                </button>
+            </div>
+            <p class="text-text-muted mb-6">I am currently open to opportunities as a Salesforce Consultant or Business Analyst. Feel free to reach out!</p>
+            
+            <div class="space-y-3">
+                <a href="mailto:haritashprsisic@gmail.com" class="flex items-center justify-center w-full py-3 bg-brand text-white rounded-lg font-semibold hover:bg-brand-dark transition shadow-md">
+                    <i data-lucide="mail" class="h-5 w-5 mr-2"></i> Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/prs-punit-sharma/" target="_blank" class="flex items-center justify-center w-full py-3 border border-gray-300 text-text-main rounded-lg font-semibold hover:bg-gray-50 transition">
+                    <i data-lucide="linkedin" class="h-5 w-5 mr-2 text-[#0077b5]"></i> LinkedIn Profile
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        lucide.createIcons();
+
+        // --- DATA ---
+        const workExperience = [
+            {
+                id: 'primahealth',
+                title: 'Salesforce Business Analyst',
+                company: 'PrimaHealth MHC, Cork, Ireland',
+                timeline: 'June 2025 - Present',
+                companyDomain: 'Healthcare / Mental Health CRM',
+                experienceDomain: 'Salesforce Admin & BA',
+                details: [
+                    'Process Automation & Efficiency: Architected and configured Health Cloud CRM utilizing 20+ custom objects and 15+ advanced Flows/OmniScripts to digitize clinical and operational workflows, successfully reducing manual data entry time.',
+                    'Operations Governance: Managed Roles, Profiles, and comprehensive sharing settings to ensure stringent data security and appropriate access levels, overseeing the end-to-end implementation and governance of Salesforce Health Cloud.',
+                    'Patient Engagement: Streamlined processes by implementing WhatsApp Integration (Enhanced Messaging), significantly improving two-way communication efficiency.',
+                    'Stakeholder Collaboration: Translated complex user requirements into clear, actionable technical functionalities, providing critical insights to the development team for accurate solution delivery.'
+                ]
+            },
+            {
+                id: 'persistent',
+                title: 'Software Engineer',
+                company: 'PERSISTENT SYSTEMS, Nagpur, India',
+                timeline: 'June 2022 - June 2024',
+                companyDomain: 'Banking / Finance',
+                experienceDomain: 'App Development & Agile Operations',
+                details: [
+                    'Software Development & Integration: Collaborated with cross-functional teams to integrate Salesforce into a core Banking Application, focusing on managing user privileges and permissions. This work involved applying principles of access control to safeguard data and streamline operations.',
+                    'Agile Development: Drove Agile development processes, actively participating in sprint planning, daily stand-ups, and retrospectives to ensure efficient project execution and continuous improvement.',
+                    'Stakeholder Management & Collaboration: Exceeded stakeholder expectations through comprehensive requirements gathering and consistent on-time delivery of applications each sprint. Developed and implemented new features and functionality, enhancing user experience and efficiency, with a solution delivery accuracy of over 80%.',
+                    'Problem Solving & Technical Expertise: Proactively resolved technical issues and defects, maintaining on-time solution delivery and achieving a 90% resolution accuracy rate, demonstrating exceptional problem-solving skills and technical expertise.',
+                    'Production Issue Resolution & Support Collaboration: Collaborated with the support team to resolve critical production-level issues, providing immediate workarounds to unblock progress and ensuring continuity of operations, later resolving complex issues with senior developers.'
+                ]
+            },
+            {
+                id: 'rmc',
+                title: 'Software Engineer Intern',
+                company: 'REGIONAL METROLOGICAL CENTER',
+                timeline: 'Sept 2021 - Mar 2022',
+                companyDomain: 'Meteorology / Government',
+                experienceDomain: 'UI Design & Architecture',
+                details: [
+                    'User Interface Design: Spearheaded the design of a user-friendly interface for meteorologists to rapidly interpret trends, patterns, and anomalies in meteorological data.',
+                    'System Architecture: Architected the system, seamlessly integrating data collection, processing, and visualization components.'
+                ]
+            }
+        ];
+
+        const keyProjects = [
+            {
+                id: 'ev-waste',
+                title: 'European EV Battery Waste Analysis',
+                subtitle: 'MSc Capstone - GreenLoop Analytics',
+                description: 'Predictive modeling and business intelligence to forecast the challenge of managing end-of-life EV batteries across Europe.',
+                icon: 'bar-chart-3',
+                link: 'https://github.com/haritashprs/IS6611-Applied-Research-in-Business-Analytics',
+                details: [
+                    { title: 'Predictive Modeling', content: 'Developed a Vector Autoregression (VAR) model using Python (Pandas, Statsmodels) capturing interdependencies with 92% forecast accuracy.' },
+                    { title: 'Business Intelligence', content: 'Engineered ETL pipelines and designed an interactive Power BI dashboard identifying critical "Waste Hot-Spots" in the UK and Netherlands.' },
+                    { title: 'Strategic Recommendations', content: 'Recommended building 350+ new plants to meet peak demand, demonstrating €3,010 cost savings per battery via recycling.' }
+                ],
+                accentColor: '#0070D2'
+            },
+            {
+                id: 'salesforce-crm',
+                title: 'Salesforce Patient Intake System',
+                subtitle: 'Health Cloud Implementation',
+                description: 'Automated, compliant end-to-end digital journey for patient screening and assessment using Health Cloud & Experience Cloud.',
+                icon: 'heart-pulse',
+                link: null,
+                details: [
+                    { title: 'Compliance & Security', content: 'Designed system processing Health Data adhering to GDPR standards, leveraging Salesforce Shield and Health Cloud Consent Management.' },
+                    { title: 'Digital Workflow', content: 'Developed multi-phase flows (Intake -> Scheduling -> Delivery) utilizing Salesforce Scheduler and WhatsApp Integration.' },
+                    { title: 'Data Architecture', content: 'Utilized Person Accounts and Health Cloud objects with Case as the central tracker for flexible patient management.' }
+                ],
+                accentColor: '#059669'
+            },
+            {
+                id: 'banking-app',
+                title: 'Banking App Risk & Efficiency',
+                subtitle: 'Core Banking Optimization',
+                description: 'Enhancing stability, performance, and compliance of a legacy core banking application.',
+                icon: 'landmark',
+                link: null,
+                details: [
+                    // UPDATED PROJECT DETAILS START HERE
+                    { title: 'Salesforce Integration & Access Control', content: 'Led the integration of Salesforce into the core banking application, specifically designing and implementing enhanced user privilege and access control mechanisms (applying RBAC principles) to safeguard sensitive data and maintain strict regulatory compliance.' },
+                    { title: 'Agile Delivery & Feature Implementation', content: 'Drove feature development within an Agile framework, consistently achieving an 80%+ solution delivery accuracy rate by executing comprehensive requirements gathering, system testing, and on-time application deployment each sprint.' },
+                    { title: 'Technical Resolution & Performance', content: 'Proactively resolved complex technical defects and implemented DB query optimizations, resulting in a 90% defect resolution accuracy rate and a 60% reduction in core banking application response time.' },
+                    { title: 'Production Incident Management', content: 'Collaborated with Tier-2 support to provide immediate workarounds for critical production issues, ensuring continuity of operations and resolving 100+ high-priority incidents within service level agreements.' }
+                    // UPDATED PROJECT DETAILS END HERE
+                ],
+                accentColor: '#475569'
+            }
+        ];
+
+        // --- FUNCTIONS ---
+
+        // Work Experience
+        function showJobDetails(jobId) {
+            const job = workExperience.find(j => j.id === jobId);
+            if (!job) return;
+
+            document.getElementById('modal-title').textContent = job.title;
+            document.getElementById('modal-company').textContent = job.company;
+            document.getElementById('modal-timeline').innerText = job.timeline;
+            document.getElementById('modal-company-domain').innerText = job.companyDomain;
+            document.getElementById('modal-experience-domain').innerText = job.experienceDomain;
+            
+            const detailsList = document.getElementById('modal-details');
+            detailsList.innerHTML = job.details.map(detail => `
+                <li class="flex items-start">
+                    <i data-lucide="check" class="h-5 w-5 mr-2 text-green-500 mt-0.5 flex-shrink-0"></i>
+                    <span>${detail}</span>
+                </li>
+            `).join('');
+
+            lucide.createIcons();
+            document.getElementById('details-modal').classList.remove('hidden');
+        }
+
+        function renderWorkExperience() {
+            const container = document.getElementById('work-experience-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            workExperience.forEach(job => {
+                const isCurrent = job.timeline.includes('Present');
+                const card = document.createElement('div');
+                card.className = `bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-brand hover:shadow-md transition-all cursor-pointer flex flex-col justify-between h-full group`;
+                card.onclick = () => showJobDetails(job.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-text-main group-hover:text-brand transition-colors">${job.title}</h3>
+                            <span class="text-sm font-semibold text-gray-500 mb-4 uppercase tracking-wide">${job.company}</span>
+                        </div>
+                        <div class="space-y-2 mb-4">
+                            <p class="text-sm text-gray-600 flex items-center"><i data-lucide="calendar" class="h-4 w-4 mr-2 text-brand"></i> ${job.timeline}</p>
+                            <p class="text-sm text-gray-600 flex items-center"><i data-lucide="briefcase" class="h-4 w-4 mr-2 text-brand"></i> ${job.experienceDomain}</p>
+                        </div>
+                    </div>
+                    <button class="w-full mt-2 py-2 text-sm font-semibold text-brand bg-blue-50 rounded hover:bg-brand hover:text-white transition-colors">
+                        View Details
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Skills
+        function setupSkillFiltering() {
+            const btns = document.querySelectorAll('.filter-btn');
+            const tags = document.querySelectorAll('.skill-tag');
+
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Reset buttons
+                    btns.forEach(b => {
+                        b.classList.remove('bg-brand', 'text-white', 'active-filter');
+                        b.classList.add('bg-white', 'text-text-muted');
+                    });
+                    // Active button
+                    btn.classList.remove('bg-white', 'text-text-muted');
+                    btn.classList.add('bg-brand', 'text-white', 'active-filter');
+
+                    const filter = btn.dataset.filter;
+                    tags.forEach(tag => {
+                        // Check if the tag contains the filter in its data-categories attribute
+                        if(filter === 'all' || tag.dataset.categories.includes(filter)) {
+                            tag.style.display = 'inline-block';
+                        } else {
+                            tag.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Projects
+        let activeProjectId = keyProjects[0].id;
+
+        function renderProjects() {
+            const btnContainer = document.getElementById('project-tab-buttons');
+            const contentContainer = document.getElementById('project-tab-content-wrapper');
+            
+            btnContainer.innerHTML = '';
+            contentContainer.innerHTML = '';
+
+            keyProjects.forEach(project => {
+                // Buttons
+                const btn = document.createElement('button');
+                btn.className = `tab-btn px-6 py-4 text-sm font-medium text-gray-500 whitespace-nowrap hover:text-brand hover:bg-gray-50 flex-shrink-0`;
+                btn.innerText = project.title;
+                btn.dataset.id = project.id;
+                btn.onclick = () => switchProject(project.id);
+                btnContainer.appendChild(btn);
+
+                // Content
+                const content = document.createElement('div');
+                content.id = `content-${project.id}`;
+                content.className = 'hidden animate-fadeIn';
+                
+                const detailsHtml = project.details.map(d => `
+                    <li class="mb-4">
+                        <span class="font-bold text-text-main block mb-1">${d.title}</span>
+                        <span class="text-gray-600 leading-relaxed">${d.content}</span>
+                    </li>
+                `).join('');
+
+                content.innerHTML = `
+                    <div class="flex items-center mb-6">
+                        <div class="p-3 rounded-lg bg-blue-50 text-brand mr-4">
+                            <i data-lucide="${project.icon}" class="h-8 w-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-text-main">${project.title}</h3>
+                            <p class="text-brand font-medium">${project.subtitle}</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic mb-6 border-l-4 border-gray-200 pl-4">${project.description}</p>
+                    <ul class="project-detail-list pl-4 text-sm md:text-base">
+                        ${detailsHtml}
+                    </ul>
+                    ${project.link ? `<div class="mt-6 pt-4 border-t border-gray-100">
+                        <a href="${project.link}" target="_blank" class="text-brand font-bold hover:underline inline-flex items-center">
+                            View on GitHub <i data-lucide="arrow-right" class="h-4 w-4 ml-1"></i>
+                        </a>
+                    </div>` : ''}
+                `;
+                contentContainer.appendChild(content);
+            });
+            
+            switchProject(activeProjectId);
+        }
+
+        function switchProject(id) {
+            activeProjectId = id;
+            // Toggle Buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if(btn.dataset.id === id) {
+                    btn.classList.add('active-tab', 'text-brand');
+                    btn.classList.remove('text-gray-500');
+                } else {
+                    btn.classList.remove('active-tab', 'text-brand');
+                    btn.classList.add('text-gray-500');
+                }
+            });
+            // Toggle Content
+            document.querySelectorAll('#project-tab-content-wrapper > div').forEach(div => {
+                if(div.id === `content-${id}`) div.classList.remove('hidden');
+                else div.classList.add('hidden');
+            });
+            lucide.createIcons();
+        }
+
+        // Init
+        window.onload = () => {
+            renderWorkExperience();
+            setupSkillFiltering();
+            renderProjects();
+            lucide.createIcons();
+        };
+
+    </script>
+</body>
+</html>
